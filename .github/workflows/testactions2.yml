@@ -7,13 +7,21 @@ jobs:
       - name: List Files
         run: |
           pwd
-          ls
+          ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "{{ github.token }}"
+          
+          git checkout $GITHUB_SHA
+      # git clone git@github:$GITHUB_REPOSITORY
+      # git clone https://<token>@github.com/owner/repo.git
       - name: Checkout
         uses: actions/checkout@v1
       - name: List Files After Checkout
         run: |
           pwd
-          ls
+          ls -a
       - name: Simple JS Action
         id: greet # create an id to reference for its output
         uses: actions/hello-world-javascript-action@v1 #you can also reference branch or commit_id
