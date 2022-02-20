@@ -8,6 +8,12 @@ jobs:
         run: |
           pwd
           ls
+      - name: Checkout
+        run: actions/checkout@v1
+      - name: List Files After Checkout
+        run: |
+          pwd
+          ls
       - name: Simple JS Action
         id: greet # create an id to reference for its output
         uses: actions/hello-world-javascript-action@v1 #you can also reference branch or commit_id
