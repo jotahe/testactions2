@@ -11,9 +11,8 @@ jobs:
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
-          echo "{{ github.token }}"
-          
-          git checkout $GITHUB_SHA
+          echo "{{ github.token }}"          
+      # git checkout $GITHUB_SHA
       # git clone git@github:$GITHUB_REPOSITORY
       # git clone https://<token>@github.com/owner/repo.git
       - name: Checkout
