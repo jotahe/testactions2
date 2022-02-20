@@ -8,10 +8,12 @@ jobs:
         run: |
           pwd
           ls -a
+          echo "Printing environment variables"
+          echo $GITHUB_HEAD_REF
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
-          echo "{{ github.token }}"          
+          echo "${{ github.token }}"          
       # git checkout $GITHUB_SHA
       # git clone git@github:$GITHUB_REPOSITORY
       # git clone https://<token>@github.com/owner/repo.git
