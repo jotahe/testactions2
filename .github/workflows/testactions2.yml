@@ -13,6 +13,8 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: payload retrieve   # retrieve value from dispatch call payload
+        run: echo ${{ github.event.payload.env }}
       - name: List Files
         run: |
           pwd
