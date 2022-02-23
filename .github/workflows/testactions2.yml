@@ -3,7 +3,7 @@ name: Action Workflow
 #Specify trigger by type
 on:
   schedule:
-    - cron: "12,14 * * * *" # Min Hours Day Month WeekDay
+    - cron: "0/18 * * * *" # Min Hours Day Month WeekDay 0/15 every fifteen
   #push:
   pull_request:
     types: [ closed, assigned, opened, reopened]
