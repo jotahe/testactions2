@@ -7,10 +7,24 @@ on:
   #schedule:
   #  - cron: "0/27 * * * *" # Min Hours Day Month WeekDay 0/15 every fifteen
   push:
-    branches:                    # restrict that only  push to master triggers the workflow
-      - master
+    branches:                    
+      - master          # enable that push to master triggers the workflow
+      - 'feature/*'     # enable all branchs that starts with feature/ to trigger the workflow
+      - 'feature/**'    # this includes branch of type feature/a/branch
+      - '!feature/b/no' # this would exclude this branch even if there is another which includes it
+    # branches-ignore:  # you can use branches indicating them or excluding which one do you not want to run on
+    #  - xbranch        # run the workflow in any branch except this one
+    #tags:               # Restric build by tag information
+    #  - v1.*            # you can use match patterns for versions  
+    # tags-ignore:      # All tags except the ones filled}
+    #    - v2*
+    #paths:
+    #  - '**.js'         # If there was a change in any .js file the workflow would run otherwise no
+    #paths-ignore:
+    #  - "**/something"  # prevent the workflow from running if this specific path was modified or so
   pull_request:
     types: [ closed, assigned, opened, reopened]
+  
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
