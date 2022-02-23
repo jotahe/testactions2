@@ -2,8 +2,10 @@ name: Action Workflow
 
 #Specify trigger by type
 on:
-  schedule:
-  - cron: "0/27 * * * *" # Min Hours Day Month WeekDay 0/15 every fifteen
+  repository_dispatch:
+    types: [build] #Would only run when the event type on json is build
+  #schedule:
+  #  - cron: "0/27 * * * *" # Min Hours Day Month WeekDay 0/15 every fifteen
   #push:
   pull_request:
     types: [ closed, assigned, opened, reopened]
