@@ -1,5 +1,10 @@
 name: Action Workflow
-on: [push, pull_request]
+
+#Specify trigger by type
+on: 
+  push:
+  pull_request:
+    types: [ closed, assigned, opened, reopened]
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
