@@ -1,5 +1,5 @@
 name: Context testing
-on: push
+on: [push, pull_request]
 
 jobs:
   functions:
@@ -13,15 +13,18 @@ jobs:
           echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
   dump_contexts_to_log:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'      # Validate if the event recived from github context event is push, then execute workflow
     steps:
       - name: Dump GitHub context
         id: github_context_step
-        run: echo '${{ toJSON(github) }}'
+        run: eccho '${{ toJSON(github) }}'
       - name: Dump job context
+        if: failed()               # Run second stepd because firs failed and the function failed pass a true to if statement successful(), cancel(), always()
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
-        run: echo '${{ toJSON(steps) }}'
+        run: techo '${{ toJSON(steps) }}'
       - name: Dump runner context
+        if: always()
         run: echo '${{ toJSON(runner) }}'
       - name: Dump strategy context
         run: echo '${{ toJSON(strategy) }}'
