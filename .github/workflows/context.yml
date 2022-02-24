@@ -19,7 +19,7 @@ jobs:
         id: github_context_step
         run: eccho '${{ toJSON(github) }}'
       - name: Dump job context
-        if: failed()               # Run second stepd because firs failed and the function failed pass a true to if statement successful(), cancel(), always()
+        if: failure()               # Run second stepd because firs failed and the function failed pass a true to if statement successful(), cancel(), always()
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
         run: techo '${{ toJSON(steps) }}'
